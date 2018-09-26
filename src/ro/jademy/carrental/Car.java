@@ -1,6 +1,6 @@
 package ro.jademy.carrental;
 
-public class Car {
+public abstract class Car {
 
     // Q: how can we better represent the car make?
     public String make;
