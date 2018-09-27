@@ -66,4 +66,10 @@ public abstract class Car {
         return color;
     }
     // Q: how can we better protect the car data?
+
+    public void showCarDetails(){
+        String output = String.format("%-15s%-15s%-15s%-15d%-15s",make,model,basePrice.toString(),doorNumber,color);
+        System.out.println(output);
+    }
+
 }

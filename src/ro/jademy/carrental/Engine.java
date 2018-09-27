@@ -16,4 +16,9 @@ public class Engine {
     public String getType() {
         return type;
     }
+
+    public String getEngineSpecs(){
+        String result = capacity + "   " + type;
+        return result;
+    }
 }
