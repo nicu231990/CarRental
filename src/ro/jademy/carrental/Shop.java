@@ -10,7 +10,7 @@ public class Shop {
     private Scanner scanner = new Scanner(System.in);
     // Q: what fields and methods should this class contain?
 
-    public boolean login() {
+    private boolean login() {
         loginPage();
         // TODO: implement a basic user login
         String username = askUserName();
@@ -34,7 +34,7 @@ public class Shop {
     }
 
 
-    public void showMenu() {
+    private void showMenu() {
 
         System.out.println(" -----------------------------------------------");
         System.out.println("|    Welcome to the Jademy Car Rental Service   |");
@@ -71,32 +71,32 @@ public class Shop {
         // Q: what should be the return type of this method?
     }
 
-    public void initEmployees() {
-        Salesman salesman1 = new Salesman("Seder", "Nicu", "password1");
-        Salesman salesman2 = new Salesman("Popescu", "Victor", "password2");
-        Salesman salesman3 = new Salesman("Ionescu", "Radu", "password3");
+    private void initEmployees() {
+        Salesman salesman1 = new Salesman("Seder", "Nicu", "nicu123","password1");
+        Salesman salesman2 = new Salesman("Popescu", "Victor","victor123", "password2");
+        Salesman salesman3 = new Salesman("Ionescu", "Radu","radu123", "password3");
         Collections.addAll(shopEmployees, salesman1, salesman2, salesman3);
     }
 
-    public boolean checkCredentials(String username, String password, Salesman salesman) {
-        if(salesman.getFirstName().equals(username) && salesman.getPassword().equals(password)){
+    private boolean checkCredentials(String username, String password, Salesman salesman) {
+        if(salesman.getUsername().equals(username) && salesman.getPassword().equals(password)){
             return true;
         }
         return false;
     }
-    public void loginPage(){
+    private void loginPage(){
         System.out.println(" -----------------------------------------------");
         System.out.println("|          Jademy Car Rental Service            |");
         System.out.println(" -----------------------------------------------");
         System.out.println("|                 Please Log In                 |");
         System.out.println(" -----------------------------------------------");
     }
-    public String askUserName(){
+    private String askUserName(){
         System.out.println("Introduce FIRST NAME");
         String username = scanner.next();
         return username;
     }
-    public String askPassword(){
+    private String askPassword(){
         System.out.println("Introduce PASSWORD");
         String password = scanner.next();
         return password;
