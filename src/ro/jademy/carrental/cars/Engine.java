@@ -1,10 +1,10 @@
 package ro.jademy.carrental.cars;
 
 public class Engine {
-    private double capacity;
+    private Double capacity;
     private FuelType fuelType;
 
-    public Engine(float capacity, FuelType fuelType){
+    public Engine(Double capacity, FuelType fuelType) {
         this.capacity = capacity;
         this.fuelType = fuelType;
     }
@@ -17,8 +17,8 @@ public class Engine {
         return fuelType;
     }
 
-    public String getEngineSpecs(){
-        String output = String.format("%-5s%-5s",capacity,fuelType);
+    public String getEngineSpecs() {
+        String output = String.format("%-5s%-5s", capacity, fuelType);
         return output;
     }
 }

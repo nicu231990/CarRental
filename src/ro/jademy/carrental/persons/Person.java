@@ -1,4 +1,4 @@
-package ro.jademy.carrental;
+package ro.jademy.carrental.persons;
 
 public abstract class Person {
     private String firstName;

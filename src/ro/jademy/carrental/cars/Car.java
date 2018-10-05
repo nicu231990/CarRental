@@ -2,24 +2,21 @@ package ro.jademy.carrental.cars;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 public abstract class Car {
 
     private Engine engine;
     private BigDecimal basePrice;
-    private CarType carType; // coupe, sedan, hatchback, convertible, wagon, SUV
-    private Transmision transmissionType; // automatic, manual
+    private CarType carType;
+    private Transmision transmissionType;
     private Integer doorNumber;
-    private String color;
+    private Color color;
     private String make;
     private String model;
     private Calendar year;
-    private boolean available;
+    private Availability available;
 
-    // Q: do we need a constructor other than the default one?
-    public Car(String make, String model, Engine engine, BigDecimal basePrice, Integer doorNumber, String color,CarType carType, Transmision transmissionType, Calendar year, boolean available){
+    public Car(String make, String model, Engine engine, BigDecimal basePrice, Integer doorNumber, Color color, CarType carType, Transmision transmissionType, Calendar year, Availability available) {
         this.make = make;
         this.model = model;
         this.engine = engine;
@@ -48,7 +45,7 @@ public abstract class Car {
         return doorNumber;
     }
 
-    public String getColor() {
+    public Color getColor() {
         return color;
     }
 
@@ -64,17 +61,26 @@ public abstract class Car {
         return make;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year.get(Calendar.YEAR);
     }
 
-    public boolean isAvailable() {
+    public Availability isAvailable() {
         return available;
     }
 
-    public void showCarDetails(){
-        String output = String.format("%-15s%-15s%-19s%-15s%-15s%-15s%-15s%-15s%-15d%-15s",make,model,engine.getEngineSpecs(),basePrice.toString(),doorNumber.toString(),color,carType,transmissionType,getYear(),available);
+    public void setAvailable(Availability available) {
+        this.available = available;
+    }
+
+    public void showCarDetails() {
+        String output = String.format("|%-15s|%-15s|%-15f|%-15s|%-15s|%-15s|%-15s|%-15s|%-15s|%-15s|%-15s|", make, model, engine.getCapacity(), engine.getType().toString(), basePrice.toString(), doorNumber.toString(), color.toString(), carType.toString(), transmissionType.toString(), getYear().toString(), available);
         System.out.println(output);
+    }
+
+    public String getCarDetails() {
+        String output = String.format("|%-15s|%-15s|%-15f|%-15s|%-15s|%-15s|%-15s|%-15s|%-15s|%-15s|%-15s|", make, model, engine.getCapacity(), engine.getType().toString(), basePrice.toString(), doorNumber.toString(), color.toString(), carType.toString(), transmissionType.toString(), getYear().toString(), available);
+        return output;
     }
 
 }
