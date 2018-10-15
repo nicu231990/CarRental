@@ -20,6 +20,7 @@ public class Shop {
     private List<Salesman> shopEmployees = new ArrayList<>();
     private List<Car> cars = new ArrayList();
     private Scanner scanner = new Scanner(System.in);
+    private Comparator<Car> comparator;
 
     //Init the list of employees (salesmen)
     private void initEmployees() {
@@ -247,14 +248,13 @@ public class Shop {
     private void sortAscending() {
         List<Car> sortedCars = new ArrayList<>();
         sortedCars.addAll(cars);
-        Collections.sort(sortedCars, new Comparator<Car>() {
-            @Override
-            public int compare(Car car, Car t1) {
-                BigDecimal price0 = car.getBasePrice();
-                BigDecimal price1 = t1.getBasePrice();
-                return price0.compareTo(price1);
-            }
+
+        Collections.sort(sortedCars, (Car car1, Car car2)->{
+            BigDecimal price0 = car1.getBasePrice();
+            BigDecimal price1 = car2.getBasePrice();
+            return price0.compareTo(price1);
         });
+
         listCar(sortedCars);
         showSortingMenu();
     }
@@ -262,13 +262,11 @@ public class Shop {
     private void sortDescending() {
         List<Car> sortedCars = new ArrayList<>();
         sortedCars.addAll(cars);
-        Collections.sort(sortedCars, new Comparator<Car>() {
-            @Override
-            public int compare(Car car, Car t1) {
-                BigDecimal price0 = car.getBasePrice();
-                BigDecimal price1 = t1.getBasePrice();
+        Collections.sort(sortedCars, (Car car1, Car car2)-> {
+                BigDecimal price0 = car1.getBasePrice();
+                BigDecimal price1 = car2.getBasePrice();
                 return price1.compareTo(price0);
-            }
+
         });
         listCar(sortedCars);
         showSortingMenu();
@@ -277,13 +275,10 @@ public class Shop {
     private void sortByColor() {
         List<Car> sortedCars = new ArrayList<>();
         sortedCars.addAll(cars);
-        Collections.sort(sortedCars, new Comparator<Car>() {
-            @Override
-            public int compare(Car car, Car t1) {
-                Color color0 = car.getColor();
-                Color color1 = t1.getColor();
+        Collections.sort(sortedCars, (Car car1, Car car2)-> {
+                Color color0 = car1.getColor();
+                Color color1 = car2.getColor();
                 return color0.compareTo(color1);
-            }
         });
         listCar(sortedCars);
         showSortingMenu();
@@ -292,13 +287,10 @@ public class Shop {
     private void sortByModel() {
         List<Car> sortedCars = new ArrayList<>();
         sortedCars.addAll(cars);
-        Collections.sort(sortedCars, new Comparator<Car>() {
-            @Override
-            public int compare(Car car, Car t1) {
-                String model0 = car.getModel();
-                String model1 = t1.getModel();
+        Collections.sort(sortedCars, (Car car1, Car car2)-> {
+                String model0 = car1.getModel();
+                String model1 = car2.getModel();
                 return model0.compareTo(model1);
-            }
         });
         listCar(sortedCars);
         showSortingMenu();
@@ -307,13 +299,10 @@ public class Shop {
     private void sortByMake() {
         List<Car> sortedCars = new ArrayList<>();
         sortedCars.addAll(cars);
-        Collections.sort(sortedCars, new Comparator<Car>() {
-            @Override
-            public int compare(Car car, Car t1) {
-                String make0 = car.getMake();
-                String make1 = t1.getMake();
+        Collections.sort(sortedCars, (Car car1, Car car2)-> {
+                String make0 = car1.getMake();
+                String make1 = car2.getMake();
                 return make0.compareTo(make1);
-            }
         });
         listCar(sortedCars);
         showSortingMenu();
@@ -322,11 +311,8 @@ public class Shop {
     private void sortNewestOldest() {
         List<Car> sortedCars = new ArrayList<>();
         sortedCars.addAll(cars);
-        Collections.sort(sortedCars, new Comparator<Car>() {
-            @Override
-            public int compare(Car car, Car t1) {
-                return t1.getYear().compareTo(car.getYear());
-            }
+        Collections.sort(sortedCars, (Car car1, Car car2)-> {
+                return car2.getYear().compareTo(car1.getYear());
         });
         listCar(sortedCars);
         showSortingMenu();
@@ -335,11 +321,8 @@ public class Shop {
     private void sortOldestNewest() {
         List<Car> sortedCars = new ArrayList<>();
         sortedCars.addAll(cars);
-        Collections.sort(sortedCars, new Comparator<Car>() {
-            @Override
-            public int compare(Car car, Car t1) {
-                return car.getYear().compareTo(t1.getYear());
-            }
+        Collections.sort(sortedCars, (Car car1, Car car2)-> {
+                return car1.getYear().compareTo(car2.getYear());
         });
         listCar(sortedCars);
         showSortingMenu();
